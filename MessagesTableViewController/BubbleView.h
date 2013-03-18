@@ -44,6 +44,10 @@ typedef enum {
 
 @property (assign, nonatomic) BubbleMessageStyle style;
 @property (copy, nonatomic) NSString *text;
+@property (strong, nonatomic) UIImage *incomingBackground;
+@property (strong, nonatomic) UIImage *outgoingBackground;
+
+- (void)setup;
 
 #pragma mark - Bubble view
 + (UIFont *)font;

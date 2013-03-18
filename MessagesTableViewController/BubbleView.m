@@ -43,11 +43,6 @@
 
 @interface BubbleView()
 
-@property (strong, nonatomic) UIImage *incomingBackground;
-@property (strong, nonatomic) UIImage *outgoingBackground;
-
-- (void)setup;
-
 @end
 
 
@@ -96,16 +91,16 @@
                                     kMarginTop,
                                     bubbleSize.width,
                                     bubbleSize.height);
-    
+
 	[image drawInRect:bubbleFrame];
-	
+
 	CGSize textSize = [BubbleView textSizeForText:self.text];
 	CGFloat textX = (CGFloat)image.leftCapWidth - 3.0f + ((self.style == BubbleMessageStyleOutgoing) ? bubbleFrame.origin.x : 0.0f);
     CGRect textFrame = CGRectMake(textX,
                                   kPaddingTop + kMarginTop,
                                   textSize.width,
                                   textSize.height);
-    
+
 	[self.text drawInRect:textFrame
                  withFont:[BubbleView font]
             lineBreakMode:NSLineBreakByWordWrapping
@@ -124,7 +119,7 @@
     int numRows = (txt.length / [BubbleView maxCharactersPerLine]) + 1;
 
     CGFloat height = MAX(numRows, [txt numberOfLines]) * [MessageInputView textViewLineHeight];
-    
+
     return [txt sizeWithFont:[BubbleView font]
            constrainedToSize:CGSizeMake(width, height)
                lineBreakMode:NSLineBreakByWordWrapping];
