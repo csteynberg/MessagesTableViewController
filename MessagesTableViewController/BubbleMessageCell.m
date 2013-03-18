@@ -50,23 +50,27 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.accessoryType = UITableViewCellAccessoryNone;
     self.accessoryView = nil;
-    
+
     self.imageView.image = nil;
     self.imageView.hidden = YES;
     self.textLabel.text = nil;
     self.textLabel.hidden = YES;
     self.detailTextLabel.text = nil;
     self.detailTextLabel.hidden = YES;
-    
-    self.bubbleView = [[BubbleView alloc] initWithFrame:CGRectMake(0.0f,
+
+    self.bubbleView = [self createBubbleView];
+
+    self.bubbleView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+    [self.contentView addSubview:self.bubbleView];
+    [self.contentView sendSubviewToBack:self.bubbleView];
+}
+
+- (BubbleView *)createBubbleView {
+    return [[BubbleView alloc] initWithFrame:CGRectMake(0.0f,
                                                                    0.0f,
                                                                    self.contentView.frame.size.width,
                                                                    self.contentView.frame.size.height)];
-    
-    self.bubbleView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    [self.contentView addSubview:self.bubbleView];
-    [self.contentView sendSubviewToBack:self.bubbleView];
 }
 
 - (id)initWithBubbleStyle:(BubbleMessageStyle)style reuseIdentifier:(NSString *)reuseIdentifier

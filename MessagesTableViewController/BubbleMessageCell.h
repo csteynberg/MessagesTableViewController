@@ -41,4 +41,6 @@
 - (id)initWithBubbleStyle:(BubbleMessageStyle)style
           reuseIdentifier:(NSString *)reuseIdentifier;
 
+- (BubbleView *)createBubbleView;
+
 @end
